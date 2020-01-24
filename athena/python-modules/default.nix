@@ -1,3 +1,5 @@
-{ }:
+{ callPackage }:
 
-{ }
+{
+  discuss = callPackage ./discuss { };
+}
