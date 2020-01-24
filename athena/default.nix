@@ -5,6 +5,7 @@ lib.makeScope newScope (self:
     aclocal = callPackage ./aclocal { };
     athinfo = python2.pkgs.callPackage ./athinfo { };
     discuss = callPackage ./discuss { };
+    discuss-ng = python2.pkgs.callPackage ./discuss-ng { };
     hesiod = callPackage ./hesiod { };
     licenses = import ./licenses.nix;
     moira = callPackage ./moira { };
