@@ -9,6 +9,7 @@ lib.makeScope newScope (self:
     hesiod = callPackage ./hesiod { };
     licenses = import ./licenses.nix;
     moira = callPackage ./moira { };
+    pyHesiodFS = python2.pkgs.callPackage ./pyhesiodfs { };
     python2 = pkgs.python2.override {
       packageOverrides = python-self: python-super:
         packages self // pythonPackagesFor python-self;
