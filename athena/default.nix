@@ -5,4 +5,5 @@ lib.makeScope newScope (self:
     aclocal = callPackage ./aclocal { };
     hesiod = callPackage ./hesiod { };
     licenses = import ./licenses.nix;
+    moira = callPackage ./moira { };
   })
