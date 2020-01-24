@@ -3,6 +3,7 @@
 lib.makeScope newScope (self:
   with self; {
     aclocal = callPackage ./aclocal { };
+    athinfo = python2.pkgs.callPackage ./athinfo { };
     discuss = callPackage ./discuss { };
     hesiod = callPackage ./hesiod { };
     licenses = import ./licenses.nix;
