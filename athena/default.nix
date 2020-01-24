@@ -18,4 +18,5 @@ lib.makeScope newScope (self:
       callPackage ./python-modules {
         callPackage = pythonPackages.callPackage;
       };
+    xdsc = python2.pkgs.callPackage ./xdsc { };
   })
