@@ -19,5 +19,6 @@ lib.makeScope newScope (self:
       callPackage ./python-modules {
         callPackage = pythonPackages.callPackage;
       };
+    remctl = callPackage ./remctl { };
     xdsc = python2.pkgs.callPackage ./xdsc { };
   })
