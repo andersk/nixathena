@@ -35,6 +35,8 @@ in {
   config = lib.mkIf cfg.enable {
     programs.fuse.userAllowOther = true;
 
+    services.athena.openafsClient.enable = lib.mkDefault true;
+
     systemd.services.athena-pyhesiodfs = {
       description = "Hesiod automounter for Athena lockers";
       after = [ "local-fs.target" "network.target" ];
