@@ -1,4 +1,5 @@
 {
   nixpkgs.overlays = [ (import ./..) ];
-  imports = [ ./kerberos.nix ./openafs-client.nix ./pyhesiodfs.nix ];
+  imports =
+    [ ./hesiod.nix ./kerberos.nix ./openafs-client.nix ./pyhesiodfs.nix ];
 }

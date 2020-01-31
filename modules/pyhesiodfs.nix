@@ -33,6 +33,8 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    networking.athena.hesiod.enable = lib.mkDefault true;
+
     programs.fuse.userAllowOther = true;
 
     services.athena.openafsClient.enable = lib.mkDefault true;
