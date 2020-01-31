@@ -15,59 +15,27 @@ in {
         type = lib.types.str;
         description = "Mount point for the pyHesiodFS automounter.";
       };
-
-      user = lib.mkOption {
-        default = "pyhesiodfs";
-        type = lib.types.str;
-        description =
-          "Name of the user in which to run the pyHesiodFS automounter.";
-      };
-
-      group = lib.mkOption {
-        default = "pyhesiodfs";
-        type = lib.types.str;
-        description =
-          "Name of the group in which to run the pyHesiodFS automounter.";
-      };
     };
   };
 
   config = lib.mkIf cfg.enable {
-    networking.athena.hesiod.enable = lib.mkDefault true;
+    environment.systemPackages = [ pkgs.athena.pyHesiodFS ];
 
-    programs.fuse.userAllowOther = true;
+    networking.athena.hesiod.enable = lib.mkDefault true;
 
     services.athena.openafsClient.enable = lib.mkDefault true;
 
-    systemd.services.athena-pyhesiodfs = {
+    systemd.automounts = [{
+      where = cfg.mountPoint;
+      wantedBy = [ "remote-fs.target" ];
+    }];
+
+    systemd.mounts = [{
       description = "Hesiod automounter for Athena lockers";
-      after = [ "local-fs.target" "network.target" ];
-      before = [ "remote-fs.target" ];
-      wantedBy = [ "multi-user.target" "remote-fs.target" ];
-
-      serviceConfig = {
-        Type = "simple";
-        User = cfg.user;
-        Group = cfg.group;
-        ExecStartPre = [
-          "-+${lib.getBin pkgs.coreutils}/bin/mkdir -m 770 ${cfg.mountPoint}"
-          "+${
-            lib.getBin pkgs.coreutils
-          }/bin/chown root:${cfg.group} ${cfg.mountPoint}"
-        ];
-        ExecStart = "${
-            lib.getBin pkgs.athena.pyHesiodFS
-          }/bin/pyhesiodfs -f ${cfg.mountPoint} -o nonempty";
-      };
-    };
-
-    users.users.${cfg.user} = {
-      description = "pyHesiodFS automounter";
-      group = cfg.group;
-      createHome = false;
-      isSystemUser = true;
-    };
-
-    users.groups.${cfg.group} = { };
+      what = "pyhesiodfs";
+      where = cfg.mountPoint;
+      type = "fuse.pyhesiodfs";
+      options = "allow_other";
+    }];
   };
 }

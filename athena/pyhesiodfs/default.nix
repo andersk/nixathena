@@ -11,6 +11,9 @@ buildPythonApplication rec {
     sha256 = "148nhk9k48vhx9q84n2yl119g7nlrc6mplic77b3skf13fbpd1jq";
   };
   propagatedBuildInputs = [ fuse locker-support PyHesiod ];
+  postInstall = ''
+    ln -s pyhesiodfs $out/bin/mount.fuse.pyhesiodfs
+  '';
 
   meta = {
     description = "Hesiod automounter for Athena lockers";
