@@ -46,11 +46,14 @@ in {
         User = cfg.user;
         Group = cfg.group;
         ExecStartPre = [
-          "-+${pkgs.coreutils}/bin/mkdir -m 770 ${cfg.mountPoint}"
-          "+${pkgs.coreutils}/bin/chown root:${cfg.group} ${cfg.mountPoint}"
+          "-+${lib.getBin pkgs.coreutils}/bin/mkdir -m 770 ${cfg.mountPoint}"
+          "+${
+            lib.getBin pkgs.coreutils
+          }/bin/chown root:${cfg.group} ${cfg.mountPoint}"
         ];
-        ExecStart =
-          "${pkgs.athena.pyHesiodFS}/bin/pyhesiodfs -f ${cfg.mountPoint} -o nonempty";
+        ExecStart = "${
+            lib.getBin pkgs.athena.pyHesiodFS
+          }/bin/pyhesiodfs -f ${cfg.mountPoint} -o nonempty";
       };
     };
 
