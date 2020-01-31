@@ -7,6 +7,7 @@ lib.makeScope newScope (self:
     discuss = callPackage ./discuss { };
     discuss-ng = python2.pkgs.callPackage ./discuss-ng { };
     hesiod = callPackage ./hesiod { };
+    hostinfo = callPackage ./hostinfo { };
     licenses = import ./licenses.nix;
     moira = callPackage ./moira { };
     pyHesiodFS = python2.pkgs.callPackage ./pyhesiodfs { };
