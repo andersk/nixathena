@@ -22,4 +22,5 @@ lib.makeScope newScope (self:
       };
     remctl = callPackage ./remctl { };
     xdsc = python2.pkgs.callPackage ./xdsc { };
+    zephyr = callPackage ./zephyr { };
   })
