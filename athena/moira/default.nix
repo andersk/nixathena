@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
   '';
   configureFlags =
     [ "--with-com_err=${e2fsprogs}" "--with-hesiod" "--with-krb5" ];
-  enableParallelBuilding = true;
+  enableParallelBuilding = false;
 
   meta = {
     description = "Athena Service Management system";
