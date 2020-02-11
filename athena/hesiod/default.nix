@@ -11,6 +11,7 @@ stdenv.mkDerivation rec {
   };
   nativeBuildInputs = [ autoreconfHook ];
   buildInputs = [ libidn ];
+  configureFlags = [ "--sysconfdir=/etc" ];
   enableParallelBuilding = true;
 
   meta = {
