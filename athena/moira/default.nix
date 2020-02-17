@@ -1,5 +1,5 @@
-{ e2fsprogs, fetchFromGitHub, hesiod, krb5, licenses, ncurses, readline, stdenv
-}:
+{ e2fsprogs, fetchFromGitHub, hesiod, libkrb5, licenses, ncurses, readline
+, stdenv }:
 
 stdenv.mkDerivation rec {
   pname = "moira";
@@ -11,15 +11,15 @@ stdenv.mkDerivation rec {
     sha256 = "0aqyrpp04xmd31yyhf1h8aldvj4lm74bhnzmip9i9wwd499gb7y5";
   };
   sourceRoot = "source/moira";
-  buildInputs = [ hesiod krb5 ncurses readline ];
+  nativeBuildInputs = [ e2fsprogs ];
+  buildInputs = [ hesiod libkrb5 ncurses readline ];
   postPatch = ''
     substituteInPlace configure --replace -ltermcap -lncurses
     substituteInPlace clients/chfn/Makefile.in --replace '$@.o' '$(OBJS)'
     substituteInPlace clients/chpobox/Makefile.in --replace '$@.o' '$(OBJS)'
     substituteInPlace clients/chsh/Makefile.in --replace '$@.o' '$(OBJS)'
   '';
-  configureFlags =
-    [ "--with-com_err=${e2fsprogs}" "--with-hesiod" "--with-krb5" ];
+  configureFlags = [ "--with-com_err" "--with-hesiod" "--with-krb5" ];
   enableParallelBuilding = false;
 
   meta = {

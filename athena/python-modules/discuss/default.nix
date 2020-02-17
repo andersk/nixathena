@@ -1,4 +1,4 @@
-{ buildPythonPackage, fetchFromGitHub, kerberos, lib }:
+{ athena-kerberos, buildPythonPackage, fetchFromGitHub, lib }:
 
 buildPythonPackage rec {
   pname = "discuss";
@@ -9,7 +9,7 @@ buildPythonPackage rec {
     rev = version;
     sha256 = "1nsrww78i42mklrncar02qh36jbv0a4vvl5ni4zdbpqcrbpv1xzk";
   };
-  propagatedBuildInputs = [ kerberos ];
+  propagatedBuildInputs = [ athena-kerberos ];
 
   meta = {
     description = "Python client for Project Athena forum system";
