@@ -18,7 +18,7 @@ stdenv.mkDerivation rec {
   '';
   configureFlags = [ "--sysconfdir=/etc" "--with-hesiod" "--with-krb5" ];
   installFlags = [ "sysconfdir=$(out)/etc" ];
-  enableParallelBuilding = true;
+  enableParallelBuilding = false;
 
   meta = {
     description = "Project Athena's notification service";
