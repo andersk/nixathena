@@ -18,7 +18,7 @@ lib.makeScope newScope (self:
     };
     python2Packages = recurseIntoAttrs (pythonPackagesFor python2.pkgs);
     pythonPackagesFor = pythonPackages:
-      callPackage ./python-modules {
+      lib.callPackagesWith self ./python-modules {
         callPackage = pythonPackages.callPackage;
       };
     remctl = callPackage ./remctl { };

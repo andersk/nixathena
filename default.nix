@@ -1,5 +1,6 @@
 self: super:
 
 {
-  athena = super.recurseIntoAttrs (super.callPackage ./athena { });
+  athena =
+    super.recurseIntoAttrs (super.lib.callPackagesWith self ./athena { });
 }
