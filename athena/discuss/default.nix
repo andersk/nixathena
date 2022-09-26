@@ -1,5 +1,5 @@
 { aclocal, automake, autoreconfHook, bison, e2fsprogs, fetchFromGitHub
-, gnu-config, licenses, nettools, pkg-config, readline, stdenv, utillinux }:
+, gnu-config, licenses, nettools, pkg-config, readline, stdenv, util-linux }:
 
 stdenv.mkDerivation rec {
   pname = "discuss";
@@ -18,7 +18,7 @@ stdenv.mkDerivation rec {
     e2fsprogs
     nettools
     pkg-config
-    utillinux
+    util-linux
   ];
   buildInputs = [ readline ];
   postPatch = ''
