@@ -11,10 +11,10 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    krb5 = {
+    security.krb5 = {
       enable = true;
-      libdefaults = { default_realm = "ATHENA.MIT.EDU"; };
-      domain_realm = {
+      settings.libdefaults = { default_realm = "ATHENA.MIT.EDU"; };
+      settings.domain_realm = {
         "mit.edu" = "ATHENA.MIT.EDU";
         ".mit.edu" = "ATHENA.MIT.EDU";
         "csail.mit.edu" = "CSAIL.MIT.EDU";
