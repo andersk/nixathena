@@ -3,12 +3,12 @@
 
 stdenv.mkDerivation rec {
   pname = "moira";
-  version = "4.0.0.3-70-g36ab6660";
+  version = "4.2.4.0";
   src = fetchFromGitHub {
     owner = "mit-athena";
     repo = pname;
     rev = version;
-    sha256 = "0aqyrpp04xmd31yyhf1h8aldvj4lm74bhnzmip9i9wwd499gb7y5";
+    sha256 = "sha256-joO8n3jocmL/JqOkt47jnN3dvmtoZGwk+Ixd+ChDcss=";
   };
   sourceRoot = "source/moira";
   nativeBuildInputs = [ e2fsprogs ];
