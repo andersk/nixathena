@@ -13,6 +13,7 @@ stdenv.mkDerivation rec {
   sourceRoot = "source/moira";
   nativeBuildInputs = [ e2fsprogs ];
   buildInputs = [ hesiod libkrb5 ncurses readline ];
+  env.NIX_CFLAGS_COMPILE = "-Wno-error=implicit-function-declaration";
   postPatch = ''
     substituteInPlace configure --replace -ltermcap -lncurses
     substituteInPlace clients/chfn/Makefile.in --replace '$@.o' '$(OBJS)'
