@@ -21,6 +21,8 @@ stdenv.mkDerivation rec {
     util-linux
   ];
   buildInputs = [ readline ];
+  env.NIX_CFLAGS_COMPILE =
+    "-Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=return-mismatch";
   postPatch = ''
     substituteInPlace edsc/newvers.sh --replace /bin/echo echo
   '';
