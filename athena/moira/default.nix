@@ -11,7 +11,10 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-joO8n3jocmL/JqOkt47jnN3dvmtoZGwk+Ixd+ChDcss=";
   };
   sourceRoot = "source/moira";
-  nativeBuildInputs = [ e2fsprogs ];
+  nativeBuildInputs = [
+    e2fsprogs
+    e2fsprogs.scripts or null
+  ];
   buildInputs = [ hesiod libkrb5 ncurses readline ];
   env.NIX_CFLAGS_COMPILE = "-Wno-error=implicit-function-declaration";
   postPatch = ''

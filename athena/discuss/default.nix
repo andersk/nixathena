@@ -16,6 +16,7 @@ stdenv.mkDerivation rec {
     autoreconfHook
     bison
     e2fsprogs
+    e2fsprogs.scripts or null
     nettools
     pkg-config
     util-linux

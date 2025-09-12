@@ -10,7 +10,13 @@ stdenv.mkDerivation rec {
     rev = "release/${version}";
     sha256 = "1a0kj7rbsmc8492f6skbi0srmvjlnl692xmkwars0lm7hw5l8hxy";
   };
-  nativeBuildInputs = [ autoreconfHook bison e2fsprogs hostname ];
+  nativeBuildInputs = [
+    autoreconfHook
+    bison
+    e2fsprogs
+    e2fsprogs.scripts or null
+    hostname
+  ];
   buildInputs = [ c-ares hesiod libkrb5 libX11 ncurses ];
   postPatch = ''
     substituteInPlace configure.ac --replace -ltermcap -lncurses
