@@ -1,7 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-let cfg = config.services.athena.openafsClient;
-in {
+let
+  cfg = config.services.athena.openafsClient;
+in
+{
   options = {
     services.athena.openafsClient.enable = lib.mkOption {
       default = false;

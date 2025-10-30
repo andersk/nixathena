@@ -1,4 +1,9 @@
-{ buildPythonPackage, fetchFromGitHub, lib, PyAFS }:
+{
+  buildPythonPackage,
+  fetchFromGitHub,
+  lib,
+  PyAFS,
+}:
 
 buildPythonPackage rec {
   pname = "locker-support";

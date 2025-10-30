@@ -1,7 +1,12 @@
-{ lib, newScope, recurseIntoAttrs, pkgs }:
+{
+  lib,
+  newScope,
+  recurseIntoAttrs,
+  pkgs,
+}:
 
-lib.makeScope newScope (self:
-  with self; {
+lib.makeScope newScope (
+  self: with self; {
     aclocal = callPackage ./aclocal { };
     athinfo = python2.pkgs.callPackage ./athinfo { };
     discuss = callPackage ./discuss { };
@@ -13,15 +18,16 @@ lib.makeScope newScope (self:
     moira = callPackage ./moira { };
     pyHesiodFS = python2.pkgs.callPackage ./pyhesiodfs { };
     python2 = pkgs.python2.override {
-      packageOverrides = python-self: python-super:
-        packages self // pythonPackagesFor python-self;
+      packageOverrides = python-self: python-super: packages self // pythonPackagesFor python-self;
     };
     python2Packages = recurseIntoAttrs (pythonPackagesFor python2.pkgs);
-    pythonPackagesFor = pythonPackages:
+    pythonPackagesFor =
+      pythonPackages:
       lib.callPackagesWith self ./python-modules {
         callPackage = pythonPackages.callPackage;
       };
     remctl = callPackage ./remctl { };
     xdsc = python2.pkgs.callPackage ./xdsc { };
     zephyr = callPackage ./zephyr { };
-  })
+  }
+)

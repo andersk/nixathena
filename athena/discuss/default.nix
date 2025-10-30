@@ -1,5 +1,18 @@
-{ aclocal, automake, autoreconfHook, bison, e2fsprogs, fetchFromGitHub
-, gnu-config, licenses, nettools, pkg-config, readline, stdenv, util-linux }:
+{
+  aclocal,
+  automake,
+  autoreconfHook,
+  bison,
+  e2fsprogs,
+  fetchFromGitHub,
+  gnu-config,
+  licenses,
+  nettools,
+  pkg-config,
+  readline,
+  stdenv,
+  util-linux,
+}:
 
 stdenv.mkDerivation rec {
   pname = "discuss";
@@ -22,8 +35,7 @@ stdenv.mkDerivation rec {
     util-linux
   ];
   buildInputs = [ readline ];
-  env.NIX_CFLAGS_COMPILE =
-    "-Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=return-mismatch";
+  env.NIX_CFLAGS_COMPILE = "-Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=return-mismatch";
   postPatch = ''
     substituteInPlace edsc/newvers.sh --replace /bin/echo echo
   '';

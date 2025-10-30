@@ -1,4 +1,12 @@
-{ fetchFromGitHub, lib, libkrb5, libevent, pcre, pkg-config, stdenv }:
+{
+  fetchFromGitHub,
+  lib,
+  libkrb5,
+  libevent,
+  pcre,
+  pkg-config,
+  stdenv,
+}:
 
 stdenv.mkDerivation rec {
   pname = "remctl";
@@ -10,7 +18,11 @@ stdenv.mkDerivation rec {
     sha256 = "04dz4h1wm2yzw7gaxq0w2pflbnny5pa9w2wb4x4nzizp4jnm59zm";
   };
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [ libevent libkrb5 pcre ];
+  buildInputs = [
+    libevent
+    libkrb5
+    pcre
+  ];
   enableParallelBuilding = true;
 
   meta = {

@@ -1,7 +1,9 @@
 { config, lib, ... }:
 
-let cfg = config.networking.athena.kerberos;
-in {
+let
+  cfg = config.networking.athena.kerberos;
+in
+{
   options = {
     networking.athena.kerberos.enable = lib.mkOption {
       default = false;
@@ -13,7 +15,9 @@ in {
   config = lib.mkIf cfg.enable {
     security.krb5 = {
       enable = true;
-      settings.libdefaults = { default_realm = "ATHENA.MIT.EDU"; };
+      settings.libdefaults = {
+        default_realm = "ATHENA.MIT.EDU";
+      };
       settings.domain_realm = {
         "mit.edu" = "ATHENA.MIT.EDU";
         ".mit.edu" = "ATHENA.MIT.EDU";

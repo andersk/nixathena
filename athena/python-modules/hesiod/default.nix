@@ -1,4 +1,10 @@
-{ buildPythonPackage, fetchFromGitHub, hesiod, lib, pyrex }:
+{
+  buildPythonPackage,
+  fetchFromGitHub,
+  hesiod,
+  lib,
+  pyrex,
+}:
 
 buildPythonPackage rec {
   pname = "PyHesiod";

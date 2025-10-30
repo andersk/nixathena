@@ -1,7 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-let cfg = config.networking.athena.hesiod;
-in {
+let
+  cfg = config.networking.athena.hesiod;
+in
+{
   options = {
     networking.athena.hesiod = {
       enable = lib.mkOption {

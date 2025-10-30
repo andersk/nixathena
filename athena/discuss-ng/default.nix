@@ -1,4 +1,9 @@
-{ buildPythonApplication, discuss, fetchFromGitHub, lib }:
+{
+  buildPythonApplication,
+  discuss,
+  fetchFromGitHub,
+  lib,
+}:
 
 buildPythonApplication rec {
   pname = "discuss-ng";

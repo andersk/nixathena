@@ -1,4 +1,10 @@
-{ autoreconfHook, fetchFromGitHub, lib, libidn, stdenv }:
+{
+  autoreconfHook,
+  fetchFromGitHub,
+  lib,
+  libidn,
+  stdenv,
+}:
 
 stdenv.mkDerivation rec {
   pname = "hesiod";

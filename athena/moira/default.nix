@@ -1,5 +1,13 @@
-{ e2fsprogs, fetchFromGitHub, hesiod, libkrb5, licenses, ncurses, readline
-, stdenv }:
+{
+  e2fsprogs,
+  fetchFromGitHub,
+  hesiod,
+  libkrb5,
+  licenses,
+  ncurses,
+  readline,
+  stdenv,
+}:
 
 stdenv.mkDerivation rec {
   pname = "moira";
@@ -15,7 +23,12 @@ stdenv.mkDerivation rec {
     e2fsprogs
     e2fsprogs.scripts or null
   ];
-  buildInputs = [ hesiod libkrb5 ncurses readline ];
+  buildInputs = [
+    hesiod
+    libkrb5
+    ncurses
+    readline
+  ];
   env.NIX_CFLAGS_COMPILE = "-Wno-error=implicit-function-declaration";
   postPatch = ''
     substituteInPlace configure --replace -ltermcap -lncurses
@@ -23,7 +36,11 @@ stdenv.mkDerivation rec {
     substituteInPlace clients/chpobox/Makefile.in --replace '$@.o' '$(OBJS)'
     substituteInPlace clients/chsh/Makefile.in --replace '$@.o' '$(OBJS)'
   '';
-  configureFlags = [ "--with-com_err" "--with-hesiod" "--with-krb5" ];
+  configureFlags = [
+    "--with-com_err"
+    "--with-hesiod"
+    "--with-krb5"
+  ];
   enableParallelBuilding = false;
 
   meta = {

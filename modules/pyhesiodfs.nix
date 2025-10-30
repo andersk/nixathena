@@ -1,7 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-let cfg = config.services.athena.pyHesiodFS;
-in {
+let
+  cfg = config.services.athena.pyHesiodFS;
+in
+{
   options = {
     services.athena.pyHesiodFS = {
       enable = lib.mkOption {
@@ -25,17 +32,21 @@ in {
 
     services.athena.openafsClient.enable = lib.mkDefault true;
 
-    systemd.automounts = [{
-      where = cfg.mountPoint;
-      wantedBy = [ "remote-fs.target" ];
-    }];
+    systemd.automounts = [
+      {
+        where = cfg.mountPoint;
+        wantedBy = [ "remote-fs.target" ];
+      }
+    ];
 
-    systemd.mounts = [{
-      description = "Hesiod automounter for Athena lockers";
-      what = "pyhesiodfs";
-      where = cfg.mountPoint;
-      type = "fuse.pyhesiodfs";
-      options = "allow_other";
-    }];
+    systemd.mounts = [
+      {
+        description = "Hesiod automounter for Athena lockers";
+        what = "pyhesiodfs";
+        where = cfg.mountPoint;
+        type = "fuse.pyhesiodfs";
+        options = "allow_other";
+      }
+    ];
   };
 }

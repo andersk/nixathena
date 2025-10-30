@@ -1,7 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-let cfg = config.services.athena.zephyrClient;
-in {
+let
+  cfg = config.services.athena.zephyrClient;
+in
+{
   options = {
     services.athena.zephyrClient = {
       enable = lib.mkOption {
@@ -13,8 +20,7 @@ in {
       openFirewall = lib.mkOption {
         default = false;
         type = lib.types.bool;
-        description =
-          "Whether to open ports in the firewall for the Zephyr host manager.";
+        description = "Whether to open ports in the firewall for the Zephyr host manager.";
       };
     };
   };
@@ -24,8 +30,7 @@ in {
 
     networking.athena.hesiod.enable = lib.mkDefault true;
     networking.athena.kerberos.enable = lib.mkDefault true;
-    networking.firewall =
-      lib.mkIf cfg.openFirewall { allowedUDPPorts = [ 2104 ]; };
+    networking.firewall = lib.mkIf cfg.openFirewall { allowedUDPPorts = [ 2104 ]; };
 
     systemd.services.athena-zhm = {
       description = "Zephyr host manager";

@@ -1,4 +1,10 @@
-{ buildPythonApplication, fetchFromGitHub, fuse, lib, locker-support, PyHesiod
+{
+  buildPythonApplication,
+  fetchFromGitHub,
+  fuse,
+  lib,
+  locker-support,
+  PyHesiod,
 }:
 
 buildPythonApplication rec {
@@ -10,7 +16,11 @@ buildPythonApplication rec {
     rev = version;
     sha256 = "148nhk9k48vhx9q84n2yl119g7nlrc6mplic77b3skf13fbpd1jq";
   };
-  propagatedBuildInputs = [ fuse locker-support PyHesiod ];
+  propagatedBuildInputs = [
+    fuse
+    locker-support
+    PyHesiod
+  ];
   postInstall = ''
     ln -s pyhesiodfs $out/bin/mount.fuse.pyhesiodfs
   '';

@@ -1,4 +1,11 @@
-{ bind, fetchFromGitHub, lib, licenses, perl, stdenv }:
+{
+  bind,
+  fetchFromGitHub,
+  lib,
+  licenses,
+  perl,
+  stdenv,
+}:
 
 stdenv.mkDerivation rec {
   pname = "hostinfo";
@@ -20,8 +27,7 @@ stdenv.mkDerivation rec {
   '';
 
   meta = {
-    description =
-      "A utility to ask an Internet nameserver for host information";
+    description = "A utility to ask an Internet nameserver for host information";
     longDescription = ''
       The hostinfo utility fetches the Domain Name System records for
       the specified host name and prints them.

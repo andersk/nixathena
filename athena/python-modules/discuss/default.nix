@@ -1,4 +1,9 @@
-{ athena-kerberos, buildPythonPackage, fetchFromGitHub, lib }:
+{
+  athena-kerberos,
+  buildPythonPackage,
+  fetchFromGitHub,
+  lib,
+}:
 
 buildPythonPackage rec {
   pname = "discuss";

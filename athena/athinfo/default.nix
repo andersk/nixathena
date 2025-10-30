@@ -1,4 +1,8 @@
-{ buildPythonApplication, fetchFromGitHub, licenses }:
+{
+  buildPythonApplication,
+  fetchFromGitHub,
+  licenses,
+}:
 
 buildPythonApplication rec {
   pname = "athinfo";
@@ -11,8 +15,7 @@ buildPythonApplication rec {
   };
 
   meta = {
-    description =
-      "An Athena utility to retrieve information about a workstation";
+    description = "An Athena utility to retrieve information about a workstation";
     longDescription = ''
       The athinfo tool queries a remote workstation using the athinfo
       daemon for information about the workstation, such as its

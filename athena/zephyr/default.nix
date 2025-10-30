@@ -1,5 +1,17 @@
-{ autoreconfHook, bison, c-ares, e2fsprogs, fetchFromGitHub, hesiod, hostname
-, libkrb5, libX11, licenses, ncurses, stdenv }:
+{
+  autoreconfHook,
+  bison,
+  c-ares,
+  e2fsprogs,
+  fetchFromGitHub,
+  hesiod,
+  hostname,
+  libkrb5,
+  libX11,
+  licenses,
+  ncurses,
+  stdenv,
+}:
 
 stdenv.mkDerivation rec {
   pname = "zephyr";
@@ -17,12 +29,22 @@ stdenv.mkDerivation rec {
     e2fsprogs.scripts or null
     hostname
   ];
-  buildInputs = [ c-ares hesiod libkrb5 libX11 ncurses ];
+  buildInputs = [
+    c-ares
+    hesiod
+    libkrb5
+    libX11
+    ncurses
+  ];
   postPatch = ''
     substituteInPlace configure.ac --replace -ltermcap -lncurses
     substituteInPlace new_vers.sh --replace /bin/echo echo
   '';
-  configureFlags = [ "--sysconfdir=/etc" "--with-hesiod" "--with-krb5" ];
+  configureFlags = [
+    "--sysconfdir=/etc"
+    "--with-hesiod"
+    "--with-krb5"
+  ];
   installFlags = [ "sysconfdir=$(out)/etc" ];
   enableParallelBuilding = false;
 
