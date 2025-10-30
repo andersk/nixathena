@@ -23,8 +23,8 @@ in
     services.openafsClient = {
       enable = true;
       cellName = "athena.mit.edu";
-      packages.module = config.boot.kernelPackages.openafs_1_8;
-      packages.programs = lib.getBin pkgs.openafs_1_8;
+      packages.module = config.boot.kernelPackages.openafs;
+      packages.programs = lib.getBin pkgs.openafs;
     };
   };
 }

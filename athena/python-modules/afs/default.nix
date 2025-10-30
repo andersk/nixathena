@@ -5,7 +5,7 @@
   lib,
   libkrb5,
   nose,
-  openafs_1_8,
+  openafs,
 }:
 
 buildPythonPackage rec {
@@ -21,7 +21,7 @@ buildPythonPackage rec {
   buildInputs = [
     cython
     libkrb5
-    openafs_1_8
+    openafs
   ];
 
   meta = {
