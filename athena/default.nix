@@ -1,7 +1,6 @@
 {
   lib,
   newScope,
-  recurseIntoAttrs,
   pkgs,
 }:
 
@@ -20,7 +19,7 @@ lib.makeScope newScope (
     python2 = pkgs.python2.override {
       packageOverrides = python-self: python-super: packages self // pythonPackagesFor python-self;
     };
-    python2Packages = recurseIntoAttrs (pythonPackagesFor python2.pkgs);
+    python2Packages = lib.recurseIntoAttrs (pythonPackagesFor python2.pkgs);
     pythonPackagesFor =
       pythonPackages:
       lib.callPackagesWith self ./python-modules {
