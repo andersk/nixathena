@@ -36,6 +36,7 @@ stdenv.mkDerivation rec {
     libX11
     ncurses
   ];
+  env.NIX_CFLAGS_COMPILE = "-std=gnu89";
   postPatch = ''
     substituteInPlace configure.ac --replace -ltermcap -lncurses
     substituteInPlace new_vers.sh --replace /bin/echo echo
